@@ -16,14 +16,24 @@ class Pessoa(Base):
 def main():
     engine = create_engine(url=URL)
 
-    Base.metadata.drop_all(bind=engine)
-    Base.metadata.create_all(bind=engine)
+    #Base.metadata.drop_all(bind=engine)
+    #Base.metadata.create_all(bind=engine)
 
     Session = sessionmaker(engine)
 
     with Session.begin() as session:
-        daniel = Pessoa(nome='Daniel M H Souza')
-        session.add(daniel)
+        #inserindo dados
+        pessoa = Pessoa(nome='Um nome')
+        session.add(pessoa)
+
+    with Session.begin() as session:
+        #atualizando dados
+
+        #seleciona atributo que vai atualizar
+        pessoa.nome = "novo nome"
+        #seleciona o id, algo como: UPDATE nome FROM pessoa WHERE id=n
+        pessoa.id_pessoa
+        session.add(pessoa)
 
 
 if __name__ == "__main__":
