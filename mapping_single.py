@@ -19,7 +19,7 @@ def main():
     #Base.metadata.drop_all(bind=engine)
     #Base.metadata.create_all(bind=engine)
 
-    Session = sessionmaker(engine)
+    Session = sessionmaker(engine, expire_on_commit=False)
 
     with Session.begin() as session:
         #inserindo dados
